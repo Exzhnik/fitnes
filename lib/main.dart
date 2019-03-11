@@ -68,7 +68,7 @@ class MyAppState extends State<MyApp> {
               ],
             ),
             drawer: buildDrawer(context),
-            body: FutureBuilder<List<Picture>>(
+            body: FutureBuilder<List<Avatars>>(
               future: fetchPhotos(http.Client()),
               builder: (context, snapshot) {
                 if (snapshot.hasError) print(snapshot.error);
