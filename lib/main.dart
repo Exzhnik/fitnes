@@ -13,11 +13,21 @@ void main() {
 
 class MyApp extends StatefulWidget {
   createState() => MyAppState();
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return null;
+  }
 }
 
 class MyAppState extends State<MyApp> {
   int counter = 0;
   bool useWidget = false;
+
+final List<Photo> photos;
+
+  MyAppState({Key key, this.photos}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +48,6 @@ class MyAppState extends State<MyApp> {
                 child: Text('Тренировка ноябрь'),
               ),
               bottom: TabBar(
-                // unselectedLabelColor: Colors.white,
-
                 indicatorPadding: EdgeInsets.all(0.0),
                 indicatorWeight: 3.0,
                 isScrollable: true,
@@ -78,95 +86,96 @@ class MyAppState extends State<MyApp> {
               },
             ),
 
-            // body: ListView.builder(
-            // itemCount: photos.length,
-            //   itemBuilder: (context, position) {
-            //     return Column(
-            //       children: <Widget>[
-            //         Row(
-            //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //           children: <Widget>[
-            //             Row(
-            //               crossAxisAlignment: CrossAxisAlignment.start,
-            //               children: <Widget>[
-            //                 Container(
-            //                   padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
-            //                   child: CircleAvatar(
-            //                     backgroundImage:
-            //                         AssetImage('res/foto/foto_me.jpg'),
-            //                     radius: 30,
-            //                   ),
-            //                 ),
-            //                 Column(
-            //                   children: <Widget>[
-            //                     Padding(
-            //                       padding: const EdgeInsets.fromLTRB(
-            //                           12.0, 12.0, 12.0, 6.0),
-            //                       child: Text(
-            //                         'Василий Петров',
-            //                         style: TextStyle(
-            //                             fontSize: 18.0,
-            //                             color: Colors.grey[500]),
-            //                       ),
-            //                     ),
-            //                     Padding(
-            //                       padding: const EdgeInsets.fromLTRB(
-            //                           12.0, 6.0, 12.0, 12.0),
-            //                       child: Text(
-            //                         'с 10:30 до 11:20 ',
-            //                         style: TextStyle(
-            //                             fontSize: 18.0,
-            //                             fontWeight: FontWeight.w700),
-            //                       ),
-            //                     ),
-            //                     useWidget
-            //                         ? Row(
-            //                             children: <Widget>[
-            //                               Padding(
-            //                                 padding: const EdgeInsets.all(10),
-            //                                 child: Text(
-            //                                   'Перенести',
-            //                                   style: TextStyle(fontSize: 18.0),
-            //                                 ),
-            //                               ),
-            //                               Padding(
-            //                                 padding: const EdgeInsets.all(10),
-            //                                 child: Text(
-            //                                   'Удалить',
-            //                                   style: TextStyle(fontSize: 18.0),
-            //                                 ),
-            //                               )
-            //                             ],
-            //                           )
-            //                         : Row(),
-            //                   ],
-            //                 ),
-            //                 Container(
-            //                   padding: EdgeInsets.fromLTRB(35, 40, 0, 5),
-            //                   child: Checkbox(
-            //                     value: useWidget,
-            //                     checkColor: Colors.white,
-            //                     activeColor: Colors.blue,
-            //                     onChanged: (bool value) {
-            //                       setState(() {
-            //                         useWidget = value;
-            //                       });
-            //                     },
-            //                   ),
-            //                 ),
-            //               ],
-            //             ),
-            //           ],
-            //         ),
-            //         Divider(
-            //           height: 2.0,
-            //           color: Colors.grey,
-            //         )
-            //       ],
-            //     );
-            //   },
-            //   // itemCount: sendersList.length,
-            // ),
+    //         body: ListView.builder(
+    //         itemCount: photos.length,
+    //           itemBuilder: (context, position) {
+
+    //                             return Column(
+    //                               children: <Widget>[
+    //                                 Row(
+    //                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                                   children: <Widget>[
+    //                                     Row(
+    //                                       crossAxisAlignment: CrossAxisAlignment.start,
+    //                                       children: <Widget>[
+    //                                         Container(
+    //                                           padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
+    //                                           child: CircleAvatar(
+    //                                             backgroundImage:
+    //                                                 AssetImage('res/foto/foto_me.jpg'),
+    //                                             radius: 30,
+    //                                           ),
+    //                                         ),
+    //                                         Column(
+    //                                           children: <Widget>[
+    //                                             Padding(
+    //                                               padding: const EdgeInsets.fromLTRB(
+    //                                                   12.0, 12.0, 12.0, 6.0),
+    //                                               child: Text(
+    //                                                 'Василий Петров',
+    //                                                 style: TextStyle(
+    //                                                     fontSize: 18.0,
+    //                                                     color: Colors.grey[500]),
+    //                                               ),
+    //                                             ),
+    //                                             Padding(
+    //                                               padding: const EdgeInsets.fromLTRB(
+    //                                                   12.0, 6.0, 12.0, 12.0),
+    //                                               child: Text(
+    //                                                 'с 10:30 до 11:20 ',
+    //                                                 style: TextStyle(
+    //                                                     fontSize: 18.0,
+    //                                                     fontWeight: FontWeight.w700),
+    //                                               ),
+    //                                             ),
+    //                                             useWidget
+    //                                                 ? Row(
+    //                                                     children: <Widget>[
+    //                                                       Padding(
+    //                                                         padding: const EdgeInsets.all(10),
+    //                                                         child: Text(
+    //                                                           'Перенести',
+    //                                                           style: TextStyle(fontSize: 18.0),
+    //                                                         ),
+    //                                                       ),
+    //                                                       Padding(
+    //                                                         padding: const EdgeInsets.all(10),
+    //                                                         child: Text(
+    //                                                           'Удалить',
+    //                                                           style: TextStyle(fontSize: 18.0),
+    //                                                         ),
+    //                                                       )
+    //                                                     ],
+    //                                                   )
+    //                                                 : Row(),
+    //                                           ],
+    //                                         ),
+    //                                         Container(
+    //   padding: EdgeInsets.fromLTRB(35, 40, 0, 5),
+    //   child: Checkbox(
+    //     value: useWidget,
+    //     checkColor: Colors.white,
+    //     activeColor: Colors.blue,
+    //     onChanged: (bool value) {
+    //       setState(() {
+    //         useWidget = value;
+    //       });
+    //     },
+    //   ),
+    // )
+    //                       ],
+    //                     ),
+    //                   ],
+    //                 ),
+    //                 Divider(
+    //                   height: 2.0,
+    //                   color: Colors.grey,
+    //                 )
+    //               ],
+    //             );
+    //           },
+    //           // itemCount: sendersList.length,
+    //         ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {},
               child: Icon(Icons.add),
@@ -227,6 +236,91 @@ class MyAppState extends State<MyApp> {
         ],
       ),
     );
+  }
+}
+
+class PhotosList extends StatelessWidget {
+  bool useWidget = false;
+  final List<Photo> photos;
+
+  PhotosList({Key key, this.photos}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: photos.length,
+      itemBuilder: (context, index) {
+        return Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(photos[index].photo),
+                        radius: 30,
+                      ),
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
+                          child: Text(
+                            'Василий Петров',
+                            style: TextStyle(
+                                fontSize: 18.0, color: Colors.grey[500]),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
+                          child: Text(
+                            'с 10:30 до 11:20 ',
+                            style: TextStyle(
+                                fontSize: 18.0, fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        useWidget
+                            ? Row(
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Text(
+                                      'Перенести',
+                                      style: TextStyle(fontSize: 18.0),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(10),
+                                    child: Text(
+                                      'Удалить',
+                                      style: TextStyle(fontSize: 18.0),
+                                    ),
+                                  )
+                                ],
+                              )
+                            : Row(),
+                      ],
+                    ),
+                    // new Check(useWidget:useWidget),
+                  ],
+                ),
+              ],
+            ),
+            Divider(
+              height: 2.0,
+              color: Colors.grey,
+            )
+          ],
+        );
+      },
+    );
+
   }
 }
 
