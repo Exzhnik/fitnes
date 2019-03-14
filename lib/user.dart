@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'main.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -39,22 +38,18 @@ class Photo {
   }
 }
 
-// class PhotosList extends StatelessWidget {
-//   final List<Photo> photos;
+class PhotosList extends StatelessWidget {
+  final List<Photo> photos;
 
-//   PhotosList({Key key, this.photos}) : super(key: key);
+  PhotosList(this.photos,{Key key}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-      
-//       // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//       //   crossAxisCount: 2,
-//       // ),
-//       // itemCount: photos.length,
-//       // itemBuilder: (context, index) {
-//       //   return Image.network(photos[index].photo);
-//       // },
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: photos.length,
+      itemBuilder: (context, index) {
+        return Image.network(photos[index].photo);
+      },
+    );
+  }
+}
