@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-import 'main.dart';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Photo>> fetchPhotos(http.Client client) async {
@@ -39,22 +37,35 @@ class Photo {
   }
 }
 
-// class PhotosList extends StatelessWidget {
-//   final List<Photo> photos;
-
-//   PhotosList({Key key, this.photos}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.builder(
-      
-//       // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//       //   crossAxisCount: 2,
-//       // ),
-//       // itemCount: photos.length,
-//       // itemBuilder: (context, index) {
-//       //   return Image.network(photos[index].photo);
-//       // },
-//     );
-//   }
-// }
+// useWidget
+//                             ? Row(
+//                                 children: <Widget>[
+//                                   IconButton(
+//                                     icon: Icon(Icons.calendar_today),
+//                                     alignment: Alignment.centerRight,
+//                                     disabledColor: Colors.white,
+//                                     onPressed: () {},
+//                                   ),
+//                                   Padding(
+//                                     padding: const EdgeInsets.symmetric(vertical: 2.0),
+//                                     child: Text(
+//                                       'Перенести',
+//                                       style: TextStyle(fontSize: 18.0),
+//                                     ),
+//                                   ),
+//                                   IconButton(
+//                                     icon: Icon(Icons.delete_outline),
+//                                     alignment: Alignment.centerRight,
+//                                     disabledColor: Colors.white,
+//                                     onPressed: () {},
+//                                   ),
+//                                   Padding(
+//                                     padding: const EdgeInsets.all(1),
+//                                     child: Text(
+//                                       'Удалить',
+//                                       style: TextStyle(fontSize: 18.0),
+//                                     ),
+//                                   )
+//                                 ],
+//                               )
+//                             : Row(),

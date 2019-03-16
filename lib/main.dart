@@ -1,6 +1,3 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'user.dart';
@@ -13,21 +10,11 @@ void main() {
 
 class MyApp extends StatefulWidget {
   createState() => MyAppState();
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
-  }
 }
 
 class MyAppState extends State<MyApp> {
   int counter = 0;
   bool useWidget = false;
-
-final List<Photo> photos;
-
-  MyAppState({Key key, this.photos}) ;
 
   @override
   Widget build(BuildContext context) {
@@ -85,97 +72,6 @@ final List<Photo> photos;
                     : Center(child: CircularProgressIndicator());
               },
             ),
-
-    //         body: ListView.builder(
-    //         itemCount: photos.length,
-    //           itemBuilder: (context, position) {
-
-    //                             return Column(
-    //                               children: <Widget>[
-    //                                 Row(
-    //                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                                   children: <Widget>[
-    //                                     Row(
-    //                                       crossAxisAlignment: CrossAxisAlignment.start,
-    //                                       children: <Widget>[
-    //                                         Container(
-    //                                           padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
-    //                                           child: CircleAvatar(
-    //                                             backgroundImage:
-    //                                                 AssetImage('res/foto/foto_me.jpg'),
-    //                                             radius: 30,
-    //                                           ),
-    //                                         ),
-    //                                         Column(
-    //                                           children: <Widget>[
-    //                                             Padding(
-    //                                               padding: const EdgeInsets.fromLTRB(
-    //                                                   12.0, 12.0, 12.0, 6.0),
-    //                                               child: Text(
-    //                                                 'Василий Петров',
-    //                                                 style: TextStyle(
-    //                                                     fontSize: 18.0,
-    //                                                     color: Colors.grey[500]),
-    //                                               ),
-    //                                             ),
-    //                                             Padding(
-    //                                               padding: const EdgeInsets.fromLTRB(
-    //                                                   12.0, 6.0, 12.0, 12.0),
-    //                                               child: Text(
-    //                                                 'с 10:30 до 11:20 ',
-    //                                                 style: TextStyle(
-    //                                                     fontSize: 18.0,
-    //                                                     fontWeight: FontWeight.w700),
-    //                                               ),
-    //                                             ),
-    //                                             useWidget
-    //                                                 ? Row(
-    //                                                     children: <Widget>[
-    //                                                       Padding(
-    //                                                         padding: const EdgeInsets.all(10),
-    //                                                         child: Text(
-    //                                                           'Перенести',
-    //                                                           style: TextStyle(fontSize: 18.0),
-    //                                                         ),
-    //                                                       ),
-    //                                                       Padding(
-    //                                                         padding: const EdgeInsets.all(10),
-    //                                                         child: Text(
-    //                                                           'Удалить',
-    //                                                           style: TextStyle(fontSize: 18.0),
-    //                                                         ),
-    //                                                       )
-    //                                                     ],
-    //                                                   )
-    //                                                 : Row(),
-    //                                           ],
-    //                                         ),
-    //                                         Container(
-    //   padding: EdgeInsets.fromLTRB(35, 40, 0, 5),
-    //   child: Checkbox(
-    //     value: useWidget,
-    //     checkColor: Colors.white,
-    //     activeColor: Colors.blue,
-    //     onChanged: (bool value) {
-    //       setState(() {
-    //         useWidget = value;
-    //       });
-    //     },
-    //   ),
-    // )
-    //                       ],
-    //                     ),
-    //                   ],
-    //                 ),
-    //                 Divider(
-    //                   height: 2.0,
-    //                   color: Colors.grey,
-    //                 )
-    //               ],
-    //             );
-    //           },
-    //           // itemCount: sendersList.length,
-    //         ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {},
               child: Icon(Icons.add),
@@ -239,79 +135,117 @@ final List<Photo> photos;
   }
 }
 
-class PhotosList extends StatelessWidget {
-  bool useWidget = false;
+class PhotosList extends StatefulWidget {
   final List<Photo> photos;
 
   PhotosList({Key key, this.photos}) : super(key: key);
 
   @override
+  _PhotosListState createState() => _PhotosListState();
+}
+
+class _PhotosListState extends State<PhotosList> {
+  bool useWidget = false;
+
+  @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: photos.length,
+      itemCount: widget.photos.length,
       itemBuilder: (context, index) {
         return Column(
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Column(
               children: <Widget>[
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
-                      padding: EdgeInsets.fromLTRB(15, 10, 0, 0),
-                      child: CircleAvatar(
-                        backgroundImage: NetworkImage(photos[index].photo),
-                        radius: 30,
-                      ),
-                    ),
-                    Column(
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 6.0),
-                          child: Text(
-                            'Василий Петров',
-                            style: TextStyle(
-                                fontSize: 18.0, color: Colors.grey[500]),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(1, 15, 50, 0),
+                          child: CircleAvatar(
+                            backgroundImage:
+                                NetworkImage(widget.photos[index].photo),
+                            radius: 30,
                           ),
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 12.0),
-                          child: Text(
-                            'с 10:30 до 11:20 ',
-                            style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.w700),
-                          ),
+                        Column(
+                          children: <Widget>[
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(1.0, 1.0, 1.0, 1.0),
+                              child: Text(
+                                '${widget.photos[index].name}',
+                                style: TextStyle(
+                                    fontSize: 18.0, color: Colors.grey[500]),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(1.0, 1.0, 1.0, 1.0),
+                              child: Text(
+                                'с 10:30 до 11:20 ',
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w700),
+                              ),
+                            ),
+                          ],
                         ),
-                        useWidget
-                            ? Row(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Text(
-                                      'Перенести',
-                                      style: TextStyle(fontSize: 18.0),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: Text(
-                                      'Удалить',
-                                      style: TextStyle(fontSize: 18.0),
-                                    ),
-                                  )
-                                ],
-                              )
-                            : Row(),
+                        
+                        Container(                        
+                          padding: EdgeInsets.fromLTRB(25, 1, 0, 1),
+                          child: Checkbox(
+                            value: useWidget,
+                            checkColor: Colors.white,
+                            activeColor: Colors.blue,
+                            onChanged: (bool value) {
+                              setState(() {
+                                useWidget = value;
+                              });
+                            },
+                          ),
+                        )
                       ],
                     ),
-                    // new Check(useWidget:useWidget),
                   ],
                 ),
               ],
             ),
+            useWidget
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.calendar_today),
+                        disabledColor: Colors.white,
+                        onPressed: () {},
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 2.0),
+                        child: Text(
+                          'Перенести',
+                          style: TextStyle(fontSize: 18.0),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete_outline),
+                        alignment: Alignment.centerRight,
+                        color: Colors.red,
+                        disabledColor: Colors.white,
+                        onPressed: () {},
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(1),
+                        child: Text(
+                          'Удалить',
+                          style: TextStyle(fontSize: 18.0, color: Colors.red),
+                        ),
+                      )
+                    ],
+                  )
+                : Row(),
             Divider(
               height: 2.0,
               color: Colors.grey,
@@ -320,7 +254,5 @@ class PhotosList extends StatelessWidget {
         );
       },
     );
-
   }
 }
-
