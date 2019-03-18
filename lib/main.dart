@@ -203,7 +203,7 @@ class PhotosListState extends State<PhotosList> {
                             activeColor: Colors.blue,
                             onChanged: (bool value) {
                               setState(() {
-                                user.isSelected;
+                                user.isSelected =value;
                               });
                             },
                           ),
