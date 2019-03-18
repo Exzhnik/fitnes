@@ -24,9 +24,9 @@ class Photo {
   final String email;
   final String position;
   final String photo;
-  final bool isselected;
+  bool isSelected;
 
-  Photo({this.name, this.email, this.position, this.photo, this.isselected});
+  Photo({this.name, this.email, this.position, this.photo, this.isSelected});
 
   factory Photo.fromJson(Map<String, dynamic> json) {
     return Photo(

@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   int counter = 0;
-  bool useWidget = false;
+  // bool useWidget = false;
 
   @override
   Widget build(BuildContext context) {
@@ -144,13 +144,8 @@ class PhotosList extends StatefulWidget {
 }
 
 class PhotosListState extends State<PhotosList> {
-  bool useWidget = true;
 
-  // void onChange(bool value, int index){
-  //   setState(() {
-  //     _date[index] = value;
-  //   });
-  // }
+
 
   @override
   Widget build(context) {
@@ -203,12 +198,12 @@ class PhotosListState extends State<PhotosList> {
                         Container(
                           padding: EdgeInsets.fromLTRB(20, 1, 0, 1),
                           child: Checkbox(
-                            value: useWidget,
+                            value: user.isSelected =false,
                             checkColor: Colors.white,
                             activeColor: Colors.blue,
                             onChanged: (bool value) {
                               setState(() {
-                                useWidget = user.isselected;
+                                user.isSelected;
                               });
                             },
                           ),
@@ -219,7 +214,7 @@ class PhotosListState extends State<PhotosList> {
                 ),
               ],
             ),
-            useWidget
+            user.isSelected
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
