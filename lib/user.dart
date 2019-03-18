@@ -24,7 +24,7 @@ class Photo {
   final String email;
   final String position;
   final String photo;
-  bool isSelected;
+  bool isSelected = false;
 
   Photo({this.name, this.email, this.position, this.photo, this.isSelected});
 

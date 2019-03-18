@@ -145,7 +145,7 @@ class PhotosList extends StatefulWidget {
 
 class PhotosListState extends State<PhotosList> {
 
-
+bool useWidget = false;
 
   @override
   Widget build(context) {
@@ -198,12 +198,13 @@ class PhotosListState extends State<PhotosList> {
                         Container(
                           padding: EdgeInsets.fromLTRB(20, 1, 0, 1),
                           child: Checkbox(
-                            value: user.isSelected =false,
+                            value: user.isSelected == null ? false: user.isSelected,
+                            
                             checkColor: Colors.white,
                             activeColor: Colors.blue,
                             onChanged: (bool value) {
                               setState(() {
-                                user.isSelected =value;
+                                user.isSelected = value;
                               });
                             },
                           ),
@@ -258,31 +259,3 @@ class PhotosListState extends State<PhotosList> {
   }
 }
 
-// class ListTest extends StatefulWidget {
-//   @override
-//   _ListTestState createState() => new _ListTestState();
-// }
-
-// class _ListTestState extends State<ListTest> {
-//   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-//   int _id;
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       key: _scaffoldKey,
-//       body: new ListView(
-//           children: new List.generate(10, (int index){
-//             return new ListTile(title: new Text("item#$index"),
-//             onTap:(){
-//               setState((){
-//                 _id = index; //if you want to assign the index somewhere to check
-//               });
-//               _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text("You clicked item number $_id")));
-//             },
-//             );
-//           })
-
-//       ),
-//     );
-//   }
-// }
