@@ -137,21 +137,27 @@ class MyAppState extends State<MyApp> {
 
 class PhotosList extends StatefulWidget {
   final List<Photo> photos;
-
   PhotosList({Key key, this.photos}) : super(key: key);
 
   @override
-  _PhotosListState createState() => _PhotosListState();
+  PhotosListState createState() => PhotosListState();
 }
 
-class _PhotosListState extends State<PhotosList> {
-  bool useWidget = false;
+class PhotosListState extends State<PhotosList> {
+  bool useWidget = true;
+
+  // void onChange(bool value, int index){
+  //   setState(() {
+  //     _date[index] = value;
+  //   });
+  // }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return ListView.builder(
       itemCount: widget.photos.length,
       itemBuilder: (context, index) {
+        var user =widget.photos[index];
         return Column(
           children: <Widget>[
             Column(
@@ -163,20 +169,21 @@ class _PhotosListState extends State<PhotosList> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.fromLTRB(1, 15, 50, 0),
+                          padding: EdgeInsets.fromLTRB(5, 15, 45, 15),
                           child: CircleAvatar(
                             backgroundImage:
-                                NetworkImage(widget.photos[index].photo),
+                                NetworkImage(user.photo),
                             radius: 30,
                           ),
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: <Widget>[
                             Padding(
                               padding:
                                   const EdgeInsets.fromLTRB(1.0, 1.0, 1.0, 1.0),
                               child: Text(
-                                '${widget.photos[index].name}',
+                                '${user.name}',
                                 style: TextStyle(
                                     fontSize: 18.0, color: Colors.grey[500]),
                               ),
@@ -193,16 +200,15 @@ class _PhotosListState extends State<PhotosList> {
                             ),
                           ],
                         ),
-                        
-                        Container(                        
-                          padding: EdgeInsets.fromLTRB(25, 1, 0, 1),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(20, 1, 0, 1),
                           child: Checkbox(
                             value: useWidget,
                             checkColor: Colors.white,
                             activeColor: Colors.blue,
                             onChanged: (bool value) {
                               setState(() {
-                                useWidget = value;
+                                useWidget = user.isselected;
                               });
                             },
                           ),
@@ -256,3 +262,32 @@ class _PhotosListState extends State<PhotosList> {
     );
   }
 }
+
+// class ListTest extends StatefulWidget {
+//   @override
+//   _ListTestState createState() => new _ListTestState();
+// }
+
+// class _ListTestState extends State<ListTest> {
+//   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+//   int _id;
+//   @override
+//   Widget build(BuildContext context) {
+//     return new Scaffold(
+//       key: _scaffoldKey,
+//       body: new ListView(
+//           children: new List.generate(10, (int index){
+//             return new ListTile(title: new Text("item#$index"),
+//             onTap:(){
+//               setState((){
+//                 _id = index; //if you want to assign the index somewhere to check
+//               });
+//               _scaffoldKey.currentState.showSnackBar(new SnackBar(content: new Text("You clicked item number $_id")));
+//             },
+//             );
+//           })
+
+//       ),
+//     );
+//   }
+// }

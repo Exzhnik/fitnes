@@ -24,8 +24,9 @@ class Photo {
   final String email;
   final String position;
   final String photo;
+  final bool isselected;
 
-  Photo({this.name, this.email, this.position, this.photo});
+  Photo({this.name, this.email, this.position, this.photo, this.isselected});
 
   factory Photo.fromJson(Map<String, dynamic> json) {
     return Photo(
@@ -33,39 +34,7 @@ class Photo {
       email: json['email'] as String,
       position: json['position'] as String,
       photo: json['photo'] as String,
+      
     );
   }
 }
-
-// useWidget
-//                             ? Row(
-//                                 children: <Widget>[
-//                                   IconButton(
-//                                     icon: Icon(Icons.calendar_today),
-//                                     alignment: Alignment.centerRight,
-//                                     disabledColor: Colors.white,
-//                                     onPressed: () {},
-//                                   ),
-//                                   Padding(
-//                                     padding: const EdgeInsets.symmetric(vertical: 2.0),
-//                                     child: Text(
-//                                       'Перенести',
-//                                       style: TextStyle(fontSize: 18.0),
-//                                     ),
-//                                   ),
-//                                   IconButton(
-//                                     icon: Icon(Icons.delete_outline),
-//                                     alignment: Alignment.centerRight,
-//                                     disabledColor: Colors.white,
-//                                     onPressed: () {},
-//                                   ),
-//                                   Padding(
-//                                     padding: const EdgeInsets.all(1),
-//                                     child: Text(
-//                                       'Удалить',
-//                                       style: TextStyle(fontSize: 18.0),
-//                                     ),
-//                                   )
-//                                 ],
-//                               )
-//                             : Row(),
