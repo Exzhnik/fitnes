@@ -1,6 +1,7 @@
 import 'package:fitnes/data/add_button.dart';
 import 'package:fitnes/data/drawer.dart';
 import 'package:fitnes/data/future.dart';
+import 'package:fitnes/data/list_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'data/user.dart';
@@ -18,7 +19,7 @@ class MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-        title: 'Fitnes',
+        title: 'Fitness',
         theme: new ThemeData(
           primarySwatch: Colors.blue,
           primaryColor: const Color.fromRGBO(255, 78, 82, 1),
@@ -103,30 +104,7 @@ class PhotosListState extends State<PhotosList> {
                             radius: 30,
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(1.0, 1.0, 1.0, 1.0),
-                              child: Text(
-                                '${user.name}',
-                                style: TextStyle(
-                                    fontSize: 18.0, color: Colors.grey[500]),
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.fromLTRB(1.0, 1.0, 1.0, 1.0),
-                              child: Text(
-                                'с 10:30 до 11:20 ',
-                                style: TextStyle(
-                                    fontSize: 18.0,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                            ),
-                          ],
-                        ),
+                        new UserName(user: user),
                         Container(
                           padding: EdgeInsets.fromLTRB(20, 1, 0, 1),
                           child: Checkbox(
@@ -146,39 +124,7 @@ class PhotosListState extends State<PhotosList> {
                 ),
               ],
             ),
-            user.isSelected
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.calendar_today),
-                        disabledColor: Colors.white,
-                        onPressed: () {},
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2.0),
-                        child: Text(
-                          'Перенести',
-                          style: TextStyle(fontSize: 18.0),
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.delete_outline),
-                        alignment: Alignment.centerRight,
-                        color: Colors.red,
-                        disabledColor: Colors.white,
-                        onPressed: () {},
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(1),
-                        child: Text(
-                          'Удалить',
-                          style: TextStyle(fontSize: 18.0, color: Colors.red),
-                        ),
-                      )
-                    ],
-                  )
-                : Row(),
+            user.isSelected ? new UserSelected() : Row(),
             Divider(
               height: 2.0,
               color: Colors.grey,
